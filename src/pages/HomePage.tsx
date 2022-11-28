@@ -6,6 +6,9 @@ import { ScientificPaperApi } from '../lib/ScientificpaperApi';
 import { AudiobookApi } from '../lib/AudiobookApi';
 import NewestScientificPaperList from '../components/NewestScientificPaperList';
 import NewestAudiobooksList from '../components/NewestAudiobooksList';
+import HomePageRegisterSection from '../components/HomePageRegisterSection';
+import KnowlageAtFingertips from '../components/KnowlageAtFingertips';
+import HomePageWelcomeSection from '../components/HomePageWelcomeSection';
 
 const HomePage: React.FC = () => {
   const loaderData: any = useLoaderData();
@@ -24,11 +27,20 @@ const HomePage: React.FC = () => {
                 const audiobooks = loadedData.audiobooks.data;
                 return (
                   <>
+                    <section className={classes.mainSectionWelcome}>
+                      <HomePageWelcomeSection />
+                    </section>
+                    <section className={classes.mainSectionKnowlage}>
+                      <KnowlageAtFingertips />
+                    </section>
                     <section className={classes.mainSectionPapers}>
                       <NewestScientificPaperList papers={papers} />
                     </section>
                     <section className={classes.mainSectionAudiobooks}>
                       <NewestAudiobooksList audiobooks={audiobooks} />
+                    </section>
+                    <section className={classes.register}>
+                      <HomePageRegisterSection />
                     </section>
                   </>
                 );

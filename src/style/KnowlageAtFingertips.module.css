@@ -1,0 +1,19 @@
+.main {
+    position: relative;
+    color: wheat;
+    line-height: 0.9;
+    text-align: center;
+  }
+  
+  .main h1 {
+    font-size: 8rem;
+    margin-top: 0px;
+    margin-bottom: 180px;
+  }
+  
+  .main h2 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+  }
+  
+  

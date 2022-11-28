@@ -1,0 +1,109 @@
+.main {
+  position: relative;
+  color: wheat;
+  line-height: 0.9;
+  text-align: center;
+}
+
+.main h1 {
+  font-size: 10rem;
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+.main h3 {
+  font-size: 5rem;
+  margin-bottom: 20px;
+}
+
+.main h4 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.regiterBtn span{
+  position: relative;
+  display: inline-flex;
+  width: 180px;
+  height: 55px;
+  margin: 0 15px;
+  perspective: 1000px;
+}
+.regiterBtn span a{
+  font-size: 19px;
+  letter-spacing: 1px;
+  transform-style: preserve-3d;
+  transform: translateZ(-25px);
+  transition: transform .25s;
+  font-family: 'Montserrat', sans-serif;
+  
+}
+.regiterBtn span a:before,
+.regiterBtn span a:after{
+  position: absolute;
+  content: "REGISTER";
+  height: 55px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid #4c2bb0;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.regiterBtn span a:before{
+  color: wheat;
+  background: #4c2bb0;
+  transform: rotateY(0deg) translateZ(25px);
+}
+.regiterBtn span a:after{
+  color: white;
+  transform: rotateX(90deg) translateZ(25px);
+}
+.regiterBtn span a:hover{
+  transform: translateZ(-25px) rotateX(-90deg);
+}
+
+
+.loginBtn span{
+  position: relative;
+  display: inline-flex;
+  width: 180px;
+  height: 55px;
+  margin: 0 15px;
+  perspective: 1000px;
+}
+.loginBtn span a{
+  font-size: 19px;
+  letter-spacing: 1px;
+  transform-style: preserve-3d;
+  transform: translateZ(-25px);
+  transition: transform .25s;
+  font-family: 'Montserrat', sans-serif;
+  
+}
+.loginBtn span a:before,
+.loginBtn span a:after{
+  position: absolute;
+  content: "LOGIN";
+  height: 55px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid #4c2bb0;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.loginBtn span a:before{
+  color: wheat;
+  background: #4c2bb0;
+  transform: rotateY(0deg) translateZ(25px);
+}
+.loginBtn span a:after{
+  color: white;
+  transform: rotateX(90deg) translateZ(25px);
+}
+.loginBtn span a:hover{
+  transform: translateZ(-25px) rotateX(-90deg);
+}
