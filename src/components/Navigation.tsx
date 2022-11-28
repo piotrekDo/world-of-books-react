@@ -1,5 +1,4 @@
 import classes from '../style/Header.module.css';
-import book from '../assets/Book.jpg';
 
 const Navigation: React.FC = () => {
   return (
