@@ -1,0 +1,4 @@
+.noDecoration:link,
+.noDecoration:visited {
+  text-decoration: none;
+}
