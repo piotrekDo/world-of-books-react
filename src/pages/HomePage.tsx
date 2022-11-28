@@ -24,10 +24,10 @@ const HomePage: React.FC = () => {
                 const audiobooks = loadedData.audiobooks.data;
                 return (
                   <>
-                    <section className={classes.mainSection}>
+                    <section className={classes.mainSectionPapers}>
                       <NewestScientificPaperList papers={papers} />
                     </section>
-                    <section className={classes.mainSection}>
+                    <section className={classes.mainSectionAudiobooks}>
                       <NewestAudiobooksList audiobooks={audiobooks} />
                     </section>
                   </>
