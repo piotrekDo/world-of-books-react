@@ -51,6 +51,11 @@
   box-sizing: border-box;
   border-radius: 5px;
 }
+
+.regiterBtn span a:after{
+  content: "Shall we?";
+}
+
 .regiterBtn span a:before{
   color: wheat;
   background: #4c2bb0;
@@ -95,6 +100,11 @@
   box-sizing: border-box;
   border-radius: 5px;
 }
+
+.loginBtn span a:after{
+  content: "Go to login page";
+}
+
 .loginBtn span a:before{
   color: wheat;
   background: #4c2bb0;
