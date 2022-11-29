@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { AudiobookModel } from '../model/AudiobookModel';
 import classes from '../style/AudiobookCard.module.css'
+import {scrollHandle} from '../utils/ScrollHandler'
 
 type AudiobookCardProps = {
   audiobook: AudiobookModel;
@@ -9,9 +10,10 @@ type AudiobookCardProps = {
 const AudiobookCard: React.FC<AudiobookCardProps> = (props) => {
   return (
     <>
-      <Link
+      <a
         className={classes.noDecoration}
-        to={`publication/${props.audiobook.id}?type=paper`}
+        href='/'
+        onClick={scrollHandle}
       >
         <div className={classes.container}>
           <div className={classes.card}>
@@ -29,7 +31,7 @@ const AudiobookCard: React.FC<AudiobookCardProps> = (props) => {
             </div>
           </div>
         </div>
-      </Link>
+      </a>
     </>
   );
 };

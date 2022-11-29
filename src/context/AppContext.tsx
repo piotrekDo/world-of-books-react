@@ -10,7 +10,10 @@ const defaultSettings: AppContextType = {
 export const AppContext = createContext<AppContextType>(defaultSettings);
 
 export const AppContextProvider = ({ children }: React.PropsWithChildren) => {
-  const [currentUser, setCurrentUser] = useState<UserTokenModel | null>(null);
+  const stash = localStorage.getItem('userData');
+ const initialState: UserTokenModel | null = stash !== null ?  JSON.parse(stash) : null;
+
+  const [currentUser, setCurrentUser] = useState<UserTokenModel | null>(initialState);
 
   const userModifier = (user: UserTokenModel | null) => {
     setCurrentUser(user);

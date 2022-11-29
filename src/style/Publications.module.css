@@ -1,0 +1,26 @@
+.main {
+    top: 90px;
+    position: relative; 
+    height: 200vh;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.main::before{
+    content: "";
+    background-image: url('../assets/library-epic.jpeg');
+    width: 105%;
+    left: -60px;
+    height: 127%;
+    background-size: cover;
+    position: absolute;
+    top: -270px;
+    bottom: 0px;
+    opacity: 0.4;
+}
+
+.main h1{
+    color: wheat;
+}

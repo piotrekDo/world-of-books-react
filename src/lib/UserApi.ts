@@ -8,7 +8,6 @@ const LOCALHOST_DOMAIN = 'http://localhost:8080';
 
 export class UserApi {
   static registerNewUser = async (data: any) => {
-    console.log('REGISTER AXIOS')
 
     try {
       const user = {
@@ -25,9 +24,7 @@ export class UserApi {
 
   static logIn = async (data: LoginModel) => {
     console.log('LOGIN AXIOS')
-    console.log(data)
     try {
-      console.log(data)
       return await axios.post<UserTokenModel>(LOCALHOST_DOMAIN + '/login', data);
     } catch (error) {
       return error;

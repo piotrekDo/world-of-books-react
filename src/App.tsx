@@ -13,6 +13,7 @@ import ScientificPaper, {
 import Register, { action as registerNewAccoutAction } from './pages/Register';
 import LoginPage from './pages/LoginPage';
 import { AppContextProvider } from './context/AppContext';
+import Publications from './pages/Publications';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: '/login-page',
         element: <LoginPage />,
+      },
+      {
+        path: '/publications',
+        element: <Publications />,
       },
       {
         path: '/publication/:id',

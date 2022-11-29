@@ -12,6 +12,7 @@ import { UserApi } from '../lib/UserApi';
 import { LoginModel } from '../model/LoginModel';
 import { UserTokenModel } from '../model/UserTokenModel';
 import classes from '../style/LoginPage.module.css';
+import { logInHandler } from '../utils/AuthorizationHandler';
 
 const LoginPage = () => {
   const context = useContext(AppContext);
@@ -48,25 +49,11 @@ const LoginPage = () => {
       username: enteredUserName,
       userPassword: enteredPass,
     };
-    const userData: any = await UserApi.logIn(userCredentials);
-    console.log(userData);
-    if (userData.code) {
-      setError(userData.response.data.details);
-      console.log(userData.response.data.details);
-      return;
-    }
-    const appUser: UserTokenModel = {
-      accessToken: userData.data.accessToken,
-      accessTokenExpiresAt: userData.data.accessTokenExpiresAt,
-      adult: userData.data.adult,
-      roles: userData.data.roles,
-      username: userData.data.username,
-    };
-    context.userModifier(appUser);
-    localStorage.setItem('userData', JSON.stringify(appUser));
+    logInHandler(context, userCredentials, setError);
+
     resetUserNameInput();
     resetPassInput();
-    return navigate('/');
+    return navigate('/publications');
   };
 
   return (

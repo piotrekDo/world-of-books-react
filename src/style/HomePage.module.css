@@ -13,7 +13,7 @@
     background-image: url('../assets/welcome-bg.jpeg');
     width: 105%;
     left: -60px;
-    height: 124%;
+    height: 127%;
     background-size: cover;
     position: absolute;
     top: -270px;
@@ -103,6 +103,7 @@
     background-image: url('../assets/register-bg.webp');
     width: 105%;
     left: -60px;
+    height: 104%;
     background-size: cover;
     position: absolute;
     top: 0px;

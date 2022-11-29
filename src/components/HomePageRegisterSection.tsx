@@ -3,7 +3,7 @@ import classes from '../style/HomePageRegisterSection.module.css';
 
 const HomePageRegisterSection = () => {
   return (
-    <div className={classes.main}>
+    <div id='registerSection' className={classes.main}>
       <h1>Why wait?</h1>
       <h3>Register today and get access to limitless possibilites</h3>
       <span className={classes.regiterBtn}><span><span><Link to={'/register'}/></span></span></span>
