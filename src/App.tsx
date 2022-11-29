@@ -7,10 +7,8 @@ import ErrorPage from './pages/Error';
 import HomePage, {
   loader as getNewestScientificPapersLoader,
 } from './pages/HomePage';
-import ScientificPaper, {
-  loader as scientificPaperLoader,
-} from './pages/ScientificPaper';
-import Register from './pages/Register';
+import ScientificPaper, { loader as scientificPaperLoader,} from './pages/ScientificPaper';
+import Register, { action as registerNewAccoutAction } from './pages/Register';
 import { ChakraProvider } from '@chakra-ui/react';
 
 const router = createBrowserRouter([
@@ -27,6 +25,7 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register />,
+        action: registerNewAccoutAction,
       },
       {
         path: '/publication/:id',
