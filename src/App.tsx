@@ -9,7 +9,7 @@ import HomePage, {
 } from './pages/HomePage';
 import ScientificPaper, { loader as scientificPaperLoader,} from './pages/ScientificPaper';
 import Register, { action as registerNewAccoutAction } from './pages/Register';
-import { ChakraProvider } from '@chakra-ui/react';
+import LoginPage, {action as loginAction }from './pages/LoginPage';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +26,11 @@ const router = createBrowserRouter([
         path: '/register',
         element: <Register />,
         action: registerNewAccoutAction,
+      },
+      {
+        path: '/login-page',
+        element: <LoginPage />,
+        action: loginAction,
       },
       {
         path: '/publication/:id',

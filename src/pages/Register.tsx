@@ -77,7 +77,7 @@ const Register = () => {
             </label>
           </div>
           {navigation.state !== 'submitting' && (
-            <button className={classes.submit}>submit</button>
+            <button className={classes.submit}>Create your account</button>
           )}
           {navigation.state === 'submitting' && (
             <div style={{ marginTop: '30px' }}>Almost there</div>

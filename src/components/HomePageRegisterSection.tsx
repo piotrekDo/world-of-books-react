@@ -8,7 +8,7 @@ const HomePageRegisterSection = () => {
       <h3>Register today and get access to limitless possibilites</h3>
       <span className={classes.regiterBtn}><span><span><Link to={'/register'}/></span></span></span>
       <h4>Already here?</h4>
-      <span className={classes.loginBtn}><span><span><Link to={'/login'}/></span></span></span>
+      <span className={classes.loginBtn}><span><span><Link to={'/login-page'}/></span></span></span>
     </div>
   );
 };
