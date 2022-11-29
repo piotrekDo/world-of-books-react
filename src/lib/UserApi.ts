@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { AppUserModel } from '../model/AppUserModel';
 import { CreateNewUserModel } from '../model/CreateNewUserModel';
+import { LoginModel } from '../model/LoginModel';
 import { UserTokenModel } from '../model/UserTokenModel';
 
 const LOCALHOST_DOMAIN = 'http://localhost:8080';
@@ -22,14 +23,12 @@ export class UserApi {
     }
   };
 
-  static logIn = async (data: any) => {
+  static logIn = async (data: LoginModel) => {
     console.log('LOGIN AXIOS')
+    console.log(data)
     try {
-      const user = {
-        username: data.get('username'),
-        userPassword: data.get('password')
-      };
-      return await axios.post<UserTokenModel>(LOCALHOST_DOMAIN + '/login', user);
+      console.log(data)
+      return await axios.post<UserTokenModel>(LOCALHOST_DOMAIN + '/login', data);
     } catch (error) {
       return error;
     }

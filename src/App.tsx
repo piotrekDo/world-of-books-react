@@ -7,9 +7,12 @@ import ErrorPage from './pages/Error';
 import HomePage, {
   loader as getNewestScientificPapersLoader,
 } from './pages/HomePage';
-import ScientificPaper, { loader as scientificPaperLoader,} from './pages/ScientificPaper';
+import ScientificPaper, {
+  loader as scientificPaperLoader,
+} from './pages/ScientificPaper';
 import Register, { action as registerNewAccoutAction } from './pages/Register';
-import LoginPage, {action as loginAction }from './pages/LoginPage';
+import LoginPage from './pages/LoginPage';
+import { AppContextProvider } from './context/AppContext';
 
 const router = createBrowserRouter([
   {
@@ -30,7 +33,6 @@ const router = createBrowserRouter([
       {
         path: '/login-page',
         element: <LoginPage />,
-        action: loginAction,
       },
       {
         path: '/publication/:id',
@@ -43,7 +45,9 @@ const router = createBrowserRouter([
 
 function App() {
   return (
+    <AppContextProvider>
       <RouterProvider router={router} />
+    </AppContextProvider>
   );
 }
 
