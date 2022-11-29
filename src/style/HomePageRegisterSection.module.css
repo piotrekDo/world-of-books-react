@@ -102,7 +102,7 @@
 }
 
 .loginBtn span a:after{
-  content: "Go to login page";
+  content: "Continue to login page";
 }
 
 .loginBtn span a:before{

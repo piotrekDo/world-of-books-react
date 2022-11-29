@@ -14,7 +14,7 @@ const NewestAudiobooksList: React.FC<NewestAudiobooksListProps> = (props) => {
       <h1>Newest Audiobooks</h1>
       <Grid templateColumns="repeat(5, 1fr)" gap={6}>
         {props.audiobooks.map((audiobook: AudiobookModel) => (
-          <AudiobookCard audiobook={audiobook}/>
+          <AudiobookCard key={audiobook.id} audiobook={audiobook}/>
         ))}
       </Grid>
     </Container>

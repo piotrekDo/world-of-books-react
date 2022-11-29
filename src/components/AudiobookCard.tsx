@@ -21,7 +21,7 @@ const AudiobookCard: React.FC<AudiobookCardProps> = (props) => {
                 <h3>{props.audiobook.name}</h3>
                 <p>{props.audiobook.description}</p>
                 {props.audiobook.authors.map((aut) => (
-                  <p>
+                  <p key={aut.id}>
                     {aut.firstName} {aut.lastName}
                   </p>
                 ))}

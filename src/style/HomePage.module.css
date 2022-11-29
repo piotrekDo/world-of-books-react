@@ -10,7 +10,7 @@
 
 .mainSectionWelcome::before{
     content: "";
-    background-image: url('https://images.pexels.com/photos/3826676/pexels-photo-3826676.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    background-image: url('../assets/welcome-bg.jpeg');
     width: 105%;
     left: -60px;
     height: 124%;

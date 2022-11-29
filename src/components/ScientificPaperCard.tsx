@@ -19,7 +19,7 @@ const ScientificPaperCard: React.FC<BookCardProps> = (props) => {
               <h2>{props.paper.field}</h2>
               <h3>{props.paper.name}</h3>
               <p>{props.paper.description}</p>
-              {props.paper.authors.map(aut=> <p>{aut.firstName} {aut.lastName}</p>)}
+              {props.paper.authors.map(aut=> <p key={aut.id}>{aut.firstName} {aut.lastName}</p>)}
             </div>
           </div>
         </div>

@@ -16,7 +16,7 @@ const NewestScientificPaperList: React.FC<NewestScientificPaperListProps> = (
       <h1>Newest scientific papers</h1>
       <Grid templateColumns="repeat(5, 1fr)" gap={6}>
         {props.papers.map((paper: ScientificPaperModel) => (
-          <ScientificPaperCard paper={paper}/>
+          <ScientificPaperCard key={paper.id} paper={paper}/>
         ))}
       </Grid>
     </Container>
