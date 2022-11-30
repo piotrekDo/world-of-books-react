@@ -10,9 +10,9 @@ import HomePage, {
 import ScientificPaper, {
   loader as scientificPaperLoader,
 } from './pages/ScientificPaper';
-import AudioBookPage, {
+import AudioBook, {
   loader as audiobookLoader,
-} from './pages/AudiobookPage';
+} from './pages/Audiobook';
 import Register, { action as registerNewAccoutAction } from './pages/Register';
 import LoginPage from './pages/LoginPage';
 import { AppContextProvider } from './context/AppContext';
@@ -59,7 +59,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/audiobook/:id',
-        element: <AudioBookPage />,
+        element: <AudioBook />,
         loader: audiobookLoader,
       },
     ],
