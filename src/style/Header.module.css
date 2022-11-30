@@ -1,85 +1,110 @@
 .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    /* height: 5rem; */
-    background-color: #4c2bb0;
-    color: wheat;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10%;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-    z-index: 10;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* height: 5rem; */
+  background-color: #4c2bb0;
+  color: wheat;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+}
 
-  .header ul {
-    list-style: none;
-    position: relative;
-    right: 20%;
-    display: flex;
-  }
+.header ul {
+  list-style: none;
+  position: relative;
+  right: 20%;
+  display: flex;
+}
 
-  .header ul li {
-    margin-left: 60px;
-  }
+.navLinks {
+}
 
+.navLink {
+  list-style: none;
+  text-decoration: none;
+  color: wheat;
+  margin-left: 20px;
+}
 
-  .button{
-    position: relative;
-    display: inline-flex;
-    width: 180px;
-    height: 30px;
-    margin: 0 15px;
-    perspective: 1000px;
-  }
-  .button a{
-    font-size: 19px;
-    letter-spacing: 1px;
-    transform-style: preserve-3d;
-    transform: translateZ(-1px);
-    transition: transform .25s;
-    font-family: 'Montserrat', sans-serif;
-    
-  }
-  span a:before,
-  span a:after{
-    position: absolute;
-    content: "Register";
-    height: 30px;
-    width: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid white;
-    box-sizing: border-box;
-    border-radius: 5px;
-  }
+.navLink::after,
+.navLink::before {
+  content: ' | ';
+}
 
-  span a:after{
-    content: "Shall we?"
-  }
+.navLinkActive:hover,
+.navLinkActive:active,
+.navLinkActive  {
+  color: #95bcf0;
+  padding-bottom: 0.25rem;
+  border-bottom: 4px solid #95bcf0;
+}
 
-  .buttonLogin a:before{
-    content: "Log in"
-  }
+.logout:hover,
+.logout:active{
+  color: #95bcf0;
+  cursor: pointer;
+}
 
-  .buttonLogin a:after{
-    content: "Go to login page"
-  }
+.header ul li {
+  margin-left: 60px;
+}
 
+.button {
+  position: relative;
+  display: inline-flex;
+  width: 180px;
+  height: 30px;
+  margin: 0 15px;
+  perspective: 1000px;
+}
+.button a {
+  font-size: 19px;
+  letter-spacing: 1px;
+  transform-style: preserve-3d;
+  transform: translateZ(-1px);
+  transition: transform 0.25s;
+  font-family: 'Montserrat', sans-serif;
+}
+span a:before,
+span a:after {
+  position: absolute;
+  content: 'Register';
+  height: 30px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
 
-  span a:before{
-    color: #fff;
-    background: #4c2bb0;
-    transform: rotateY(0deg) translateZ(1px);
-  }
-  span a:after{
-    color: wheat;
-    transform: rotateX(90deg) translateZ(1px);
-  }
-  span a:hover{
-    transform: translateZ(-1px) rotateX(-90deg);
-  }
-  
+span a:after {
+  content: 'Shall we?';
+}
+
+.buttonLogin a:before {
+  content: 'Log in';
+}
+
+.buttonLogin a:after {
+  content: 'Go to login page';
+}
+
+span a:before {
+  color: #fff;
+  background: #4c2bb0;
+  transform: rotateY(0deg) translateZ(1px);
+}
+span a:after {
+  color: wheat;
+  transform: rotateX(90deg) translateZ(1px);
+}
+span a:hover {
+  transform: translateZ(-1px) rotateX(-90deg);
+}

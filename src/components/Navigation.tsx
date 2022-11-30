@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { logOuthandler } from '../utils/AuthorizationHandler'
+import { logOuthandler } from '../utils/AuthorizationHandler';
 import AppContext from '../context/AppContext';
 import classes from '../style/Header.module.css';
 
@@ -12,12 +12,43 @@ const Navigation: React.FC = () => {
   const onLogoutHandler = () => {
     logOuthandler(context);
     return navigate('/');
-  }
+  };
+
+  const navLinkClasses = classes.navLink;
+  const navLinkClassesActive = `${classes.navLink} ${classes.navLinkActive}`;
 
   return (
     <nav className={classes.headerSection}>
       <header className={classes.header}>
         <h1>World of books</h1>
+        {isUserLogged && (
+          <ul className={classes.navLinks}>
+            <NavLink
+              className={(navData) =>
+                navData.isActive ? navLinkClassesActive : navLinkClasses
+              }
+              to="/publications"
+            >
+              Publications
+            </NavLink>
+            <NavLink
+              className={(navData) =>
+                navData.isActive ? navLinkClassesActive : navLinkClasses
+              }
+              to="/"
+            >
+              Dummy Link
+            </NavLink>
+            <NavLink
+              className={(navData) =>
+                navData.isActive ? navLinkClassesActive : navLinkClasses
+              }
+              to="/lol"
+            >
+              Anuther dummy Link
+            </NavLink>
+          </ul>
+        )}
         {!isUserLogged && (
           <ul>
             <li>
@@ -38,8 +69,17 @@ const Navigation: React.FC = () => {
         )}
         {isUserLogged && (
           <ul>
-            <li><NavLink to={'/user'}><button>{context.currentUser?.username}</button></NavLink></li>
-            <li onClick={onLogoutHandler}>Logout</li>
+            <li>
+              <NavLink
+                to={'/user'}
+                className={(navData) =>
+                  navData.isActive ? navLinkClassesActive : navLinkClasses
+                }
+              >
+                {context.currentUser?.username}
+              </NavLink>
+            </li>
+            <li onClick={onLogoutHandler} className={classes.logout}>Logout</li>
           </ul>
         )}
       </header>
