@@ -42,18 +42,20 @@ const LoginPage = () => {
   const isSubmitting = navigation.state === 'submitting';
 
   const onLoginHandler = async (event: React.FormEvent | any) => {
-    setError(null)
+    setError(null);
     event.preventDefault();
     if (!formIsValid) return;
     const userCredentials: LoginModel = {
       username: enteredUserName,
       userPassword: enteredPass,
     };
-    logInHandler(context, userCredentials, setError);
+    const loginSuccesfull = await logInHandler(context, userCredentials, setError);
 
+    if(loginSuccesfull) {
     resetUserNameInput();
     resetPassInput();
     return navigate('/publications');
+    }
   };
 
   return (

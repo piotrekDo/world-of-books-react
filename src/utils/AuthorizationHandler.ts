@@ -25,7 +25,7 @@ export const logInHandler = async (
   if (userData.code) {
     setError(userData.response.data.details);
     console.log(userData.response.data.details);
-    return;
+    return false;
   }
   const appUser: UserTokenModel = {
     accessToken: userData.data.accessToken,
@@ -40,6 +40,7 @@ export const logInHandler = async (
   logOutTimer = setTimeout(() => {
     logOuthandler(context);
   }, reminingTime);
+  return true;
 };
 
 const calculateRemainigTime = (expirationTime: string): number => {
