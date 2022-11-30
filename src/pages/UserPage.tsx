@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import BorrowHistoryByUser from '../components/BorrowHistoryByUser';
 import CurrentlyBorrowedByUserList from '../components/CurrentlyBorrowedByUserList';
 import AppContext from '../context/AppContext';
 import classes from '../style/UserPage.module.css';
@@ -13,6 +14,8 @@ const UserPage: React.FC = (props) => {
       <div>
         <CurrentlyBorrowedByUserList username={user!.username} />
       </div>
+      <h3>Borrow history</h3>
+      <BorrowHistoryByUser username={user!.username}/>
     </section>
   );
 };

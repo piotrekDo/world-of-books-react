@@ -7,5 +7,8 @@ export class BorrowApi {
     static getCurrentlyBorrowedPublicationsByUser = async (username: string) => {
       return await axios.get<BorrowModel[]>(LOCALHOST_DOMAIN + `/borrow/currently-borrowed-by/${username}`);
     };
-  
+
+    static getPublicationsBorrowHistoryByUser = async (username:string) => {
+      return await axios.get<BorrowModel[]>(LOCALHOST_DOMAIN + `/borrow/by-user/${username}`)
+    }
   }

@@ -9,11 +9,14 @@ type ComponentProps = {
 
 const CurrentlyBorrowedByUserList: React.FC<ComponentProps> = (props) => {
   const [borrowed, setBorrowed] = useState<BorrowModel[] | null>(null);
-  const isLoading = !borrowed ? true : false;
+
+  const isBorrowedLoading = !borrowed ? true : false;
 
   const fetchBorrowed = useCallback(async () => {
     await sleep(2000);
-    const data = await BorrowApi.getCurrentlyBorrowedPublicationsByUser(props.username);
+    const data = await BorrowApi.getCurrentlyBorrowedPublicationsByUser(
+      props.username
+    );
     console.log(data);
     if (data.data) {
       setBorrowed(data.data);
@@ -24,21 +27,27 @@ const CurrentlyBorrowedByUserList: React.FC<ComponentProps> = (props) => {
     fetchBorrowed();
   }, [fetchBorrowed]);
 
-  console.log(borrowed);
-
   return (
     <>
-      {isLoading && (
-        <div>
-          <PrimarySpinner message="Loading borrowed publicaions" />
-        </div>
-      )}
-      {(!isLoading && borrowed!.length ===0) && <p>No bubs borrowed</p> }
-      {(!isLoading && borrowed!.length > 0) &&
-      <ul>
-        {borrowed!.map(borrowed => <p key={borrowed.id}>{borrowed.publicationName}, {borrowed.requiredReturnDate}</p>)}
-        </ul>
-        }
+      <section id='currentlyBorrowedSection'>
+        {isBorrowedLoading && (
+          <div>
+            <PrimarySpinner message="Loading borrowed publicaions" />
+          </div>
+        )}
+        {!isBorrowedLoading && borrowed!.length === 0 && (
+          <p>No bubs borrowed</p>
+        )}
+        {!isBorrowedLoading && borrowed!.length > 0 && (
+          <ul>
+            {borrowed!.map((borrowed) => (
+              <p key={borrowed.id}>
+                {borrowed.publicationName}, {borrowed.requiredReturnDate}
+              </p>
+            ))}
+          </ul>
+        )}
+      </section>
     </>
   );
 };
