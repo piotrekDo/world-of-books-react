@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { logOuthandler } from '../utils/AuthorizationHandler'
 import AppContext from '../context/AppContext';
 import classes from '../style/Header.module.css';
@@ -38,7 +38,7 @@ const Navigation: React.FC = () => {
         )}
         {isUserLogged && (
           <ul>
-            <li>{context.currentUser?.username}</li>
+            <li><NavLink to={'/user'}><button>{context.currentUser?.username}</button></NavLink></li>
             <li onClick={onLogoutHandler}>Logout</li>
           </ul>
         )}

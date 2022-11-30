@@ -14,6 +14,8 @@ import Register, { action as registerNewAccoutAction } from './pages/Register';
 import LoginPage from './pages/LoginPage';
 import { AppContextProvider } from './context/AppContext';
 import Publications from './pages/Publications';
+import UserPage from './pages/UserPage';
+import CurrentlyBorrowedByUserList from './components/CurrentlyBorrowedByUserList';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: '/login-page',
         element: <LoginPage />,
+      },
+      {
+        path: '/user',
+        element: <UserPage />,
       },
       {
         path: '/publications',
