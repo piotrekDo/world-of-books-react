@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import AppContext from '../context/AppContext';
 import { AudiobookModel } from '../model/AudiobookModel';
 import classes from '../style/AudiobookCard.module.css'
 import {scrollHandle} from '../utils/ScrollHandler'
@@ -8,12 +10,19 @@ type AudiobookCardProps = {
 };
 
 const AudiobookCard: React.FC<AudiobookCardProps> = (props) => {
+  const context = useContext(AppContext);
+  const navigation = useNavigate();
+  const user = context.currentUser;
+
+  const redirectHandler = () => {
+    console.log(props.audiobook.id)
+   return navigation(`/audiobook/${props.audiobook.id}`)
+  }
   return (
     <>
       <a
         className={classes.noDecoration}
-        href='/'
-        onClick={scrollHandle}
+        onClick={user ? redirectHandler : scrollHandle}
       >
         <div className={classes.container}>
           <div className={classes.card}>

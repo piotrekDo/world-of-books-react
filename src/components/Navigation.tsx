@@ -27,17 +27,17 @@ const Navigation: React.FC = () => {
               className={(navData) =>
                 navData.isActive ? navLinkClassesActive : navLinkClasses
               }
-              to="/publications"
+              to="/"
             >
-              Publications
+              What's new
             </NavLink>
             <NavLink
               className={(navData) =>
                 navData.isActive ? navLinkClassesActive : navLinkClasses
               }
-              to="/"
+              to="/publications"
             >
-              Dummy Link
+              Publications
             </NavLink>
             <NavLink
               className={(navData) =>
@@ -79,7 +79,9 @@ const Navigation: React.FC = () => {
                 {context.currentUser?.username}
               </NavLink>
             </li>
-            <li onClick={onLogoutHandler} className={classes.logout}>Logout</li>
+            <li onClick={onLogoutHandler} className={classes.logout}>
+              Logout
+            </li>
           </ul>
         )}
       </header>

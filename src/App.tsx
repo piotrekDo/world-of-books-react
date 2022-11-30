@@ -10,12 +10,14 @@ import HomePage, {
 import ScientificPaper, {
   loader as scientificPaperLoader,
 } from './pages/ScientificPaper';
+import AudioBookPage, {
+  loader as audiobookLoader,
+} from './pages/AudiobookPage';
 import Register, { action as registerNewAccoutAction } from './pages/Register';
 import LoginPage from './pages/LoginPage';
 import { AppContextProvider } from './context/AppContext';
 import Publications from './pages/Publications';
 import UserPage from './pages/UserPage';
-import CurrentlyBorrowedByUserList from './components/CurrentlyBorrowedByUserList';
 
 const router = createBrowserRouter([
   {
@@ -46,9 +48,14 @@ const router = createBrowserRouter([
         element: <Publications />,
       },
       {
-        path: '/publication/:id',
+        path: '/paper/:id',
         element: <ScientificPaper />,
         loader: scientificPaperLoader,
+      },
+      {
+        path: '/audiobook/:id',
+        element: <AudioBookPage />,
+        loader: audiobookLoader,
       },
     ],
   },

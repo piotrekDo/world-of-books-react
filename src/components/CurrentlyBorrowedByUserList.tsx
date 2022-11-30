@@ -9,15 +9,21 @@ type ComponentProps = {
 
 const CurrentlyBorrowedByUserList: React.FC<ComponentProps> = (props) => {
   const [borrowed, setBorrowed] = useState<BorrowModel[] | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const isBorrowedLoading = !borrowed ? true : false;
 
   const fetchBorrowed = useCallback(async () => {
     await sleep(2000);
-    const data = await BorrowApi.getCurrentlyBorrowedPublicationsByUser(
+    const data: any = await BorrowApi.getCurrentlyBorrowedPublicationsByUser(
       props.username
     );
-    console.log(data);
+
+    if(data.message) {
+      setError(data.message);
+      setBorrowed([]);
+    }
+
     if (data.data) {
       setBorrowed(data.data);
     }
@@ -29,14 +35,15 @@ const CurrentlyBorrowedByUserList: React.FC<ComponentProps> = (props) => {
 
   return (
     <>
-      <section id='currentlyBorrowedSection'>
+      <section id="currentlyBorrowedSection">
         {isBorrowedLoading && (
           <div>
             <PrimarySpinner message="Loading borrowed publicaions" />
           </div>
         )}
-        {!isBorrowedLoading && borrowed!.length === 0 && (
-          <p>No bubs borrowed</p>
+        {!isBorrowedLoading && error && <p>{error}</p>}
+        {!isBorrowedLoading && borrowed!.length === 0 && !error && (
+          <p>No currently borrowed publications</p>
         )}
         {!isBorrowedLoading && borrowed!.length > 0 && (
           <ul>

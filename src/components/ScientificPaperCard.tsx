@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import AppContext from '../context/AppContext';
 import { ScientificPaperModel } from '../model/ScientificPaperModel';
 import classes from '../style/ScientificPaperCard.module.css';
 import {scrollHandle} from '../utils/ScrollHandler'
@@ -9,11 +10,19 @@ type BookCardProps = {
 };
 
 const ScientificPaperCard: React.FC<BookCardProps> = (props) => {
+  const context = useContext(AppContext);
+  const navigation = useNavigate();
+  const user = context.currentUser;
+
+  const redirectHandler = () => {
+    console.log(props.paper.id)
+   return navigation(`/paper/${props.paper.id}`)
+  }
+
   return (
     <a
       className={classes.noDecoration}
-      href="/"
-      onClick={scrollHandle}
+      onClick={user ? redirectHandler : scrollHandle}
     >
       <div className={classes.container}>
         <div className={classes.card}>

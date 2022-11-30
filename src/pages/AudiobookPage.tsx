@@ -1,10 +1,11 @@
 import { Suspense } from 'react';
 import { Await, useLoaderData } from 'react-router-dom';
 import ScientificPaperPage from '../components/ScientificPaperPage';
+import { AudiobookApi } from '../lib/AudiobookApi';
 import { ScientificPaperApi } from '../lib/ScientificpaperApi';
-import classes from '../style/ScientificPaperPage.module.css'
+import classes from '../style/AudioBookPage.module.css'
 
-const ScientificPaper: React.FC = (props) => {
+const AudioBookPage: React.FC = (props) => {
   const publicationData = useLoaderData();
   return (
     <section className={classes.main}>
@@ -19,9 +20,9 @@ const ScientificPaper: React.FC = (props) => {
     </section>
   );
 };
-export default ScientificPaper;
+export default AudioBookPage;
 
 export function loader({ params }: any) {
   const id = params.id;
-  return ScientificPaperApi.getScientificPaper(id);
+  return AudiobookApi.getAudiobook(id);
 }

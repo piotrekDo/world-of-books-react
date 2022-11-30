@@ -8,7 +8,7 @@ export class AudiobookApi {
       return await axios.get<AudiobookModel[]>(LOCALHOST_DOMAIN + '/audiobooks/newest');
     };
   
-    static getScientificPaper = async (id: number) => {
+    static getAudiobook = async (id: number) => {
       return await axios.get<AudiobookModel>(LOCALHOST_DOMAIN + `/audiobook/${id}`);
     }
   }

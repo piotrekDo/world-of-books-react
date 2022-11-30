@@ -1,5 +1,5 @@
 import { Container } from '@chakra-ui/react';
-import React, { Suspense } from 'react';
+import React, { Suspense, useContext } from 'react';
 import { Await, defer, useLoaderData } from 'react-router-dom';
 import classes from '../style/HomePage.module.css';
 import { ScientificPaperApi } from '../lib/ScientificpaperApi';
@@ -9,9 +9,13 @@ import NewestAudiobooksList from '../components/NewestAudiobooksList';
 import HomePageRegisterSection from '../components/HomePageRegisterSection';
 import KnowlageAtFingertips from '../components/KnowlageAtFingertips';
 import HomePageWelcomeSection from '../components/HomePageWelcomeSection';
+import AppContext from '../context/AppContext';
 
 const HomePage: React.FC = () => {
+  const context = useContext(AppContext);
   const loaderData: any = useLoaderData();
+
+  const user = context.currentUser;
 
   return (
     <>
@@ -27,21 +31,27 @@ const HomePage: React.FC = () => {
                 const audiobooks = loadedData.audiobooks.data;
                 return (
                   <>
-                    <section className={classes.mainSectionWelcome}>
-                      <HomePageWelcomeSection />
-                    </section>
-                    <section className={classes.mainSectionKnowlage}>
-                      <KnowlageAtFingertips />
-                    </section>
+                    {!user && (
+                      <>
+                        <section className={classes.mainSectionWelcome}>
+                          <HomePageWelcomeSection />
+                        </section>
+                        <section className={classes.mainSectionKnowlage}>
+                          <KnowlageAtFingertips />
+                        </section>
+                      </>
+                    )}
                     <section className={classes.mainSectionPapers}>
                       <NewestScientificPaperList papers={papers} />
                     </section>
                     <section className={classes.mainSectionAudiobooks}>
                       <NewestAudiobooksList audiobooks={audiobooks} />
                     </section>
-                    <section className={classes.register}>
-                      <HomePageRegisterSection />
-                    </section>
+                    {!user && (
+                      <section className={classes.register}>
+                        <HomePageRegisterSection />
+                      </section>
+                    )}
                   </>
                 );
               }}
