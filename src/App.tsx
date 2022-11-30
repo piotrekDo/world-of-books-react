@@ -18,6 +18,7 @@ import LoginPage from './pages/LoginPage';
 import { AppContextProvider } from './context/AppContext';
 import Publications from './pages/Publications';
 import UserPage from './pages/UserPage';
+import ManageUsers from './pages/ManageUsers';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: '/login-page',
         element: <LoginPage />,
+      },
+      {
+        path: '/users-manager',
+        element: <ManageUsers />,
       },
       {
         path: '/user',

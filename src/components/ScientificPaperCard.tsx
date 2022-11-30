@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 import { ScientificPaperModel } from '../model/ScientificPaperModel';
@@ -28,7 +28,7 @@ const ScientificPaperCard: React.FC<BookCardProps> = (props) => {
         <div className={classes.card}>
           <div className={classes.box}>
             <div className={classes.content}>
-              <h2>{props.paper.field}</h2>
+              <h2>{props.paper.field === 'COMPUTER_SCIENCE' ? 'CS' : props.paper.field}</h2>
               <h3>{props.paper.name}</h3>
               <p>{props.paper.description}</p>
               {props.paper.authors.map((aut) => (

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { BorrowApi } from '../lib/BorrowApi';
 import { BorrowModel } from '../model/BorrowModel';
+import { sleep } from '../utils/Other';
 import PrimarySpinner from './spinners/PrimarySpinner';
 
 type ComponentProps = {
@@ -60,11 +61,3 @@ const CurrentlyBorrowedByUserList: React.FC<ComponentProps> = (props) => {
 };
 
 export default CurrentlyBorrowedByUserList;
-
-function sleep(time: number) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(null);
-    }, time);
-  });
-}

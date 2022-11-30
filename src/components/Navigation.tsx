@@ -7,6 +7,10 @@ import classes from '../style/Header.module.css';
 const Navigation: React.FC = () => {
   const navigate = useNavigate();
   const context = useContext(AppContext);
+  const isAdmin =
+    context.currentUser?.roles === undefined
+      ? false
+      : context.currentUser?.roles.indexOf('admin') > -1;
   const isUserLogged = !!context.currentUser?.accessToken;
 
   const onLogoutHandler = () => {
@@ -17,10 +21,13 @@ const Navigation: React.FC = () => {
   const navLinkClasses = classes.navLink;
   const navLinkClassesActive = `${classes.navLink} ${classes.navLinkActive}`;
 
+  const headerClasses = classes.header;
+  const headerClassesAdmin = `${classes.header} ${classes['header__admin']}`;
+
   return (
-    <nav className={classes.headerSection}>
-      <header className={classes.header}>
-        <h1>World of books</h1>
+    <nav>
+      <header className={isAdmin ? headerClassesAdmin : headerClasses}>
+        <h1>World of books {isAdmin && '-AdminMode'}</h1>
         {isUserLogged && (
           <ul className={classes.navLinks}>
             <NavLink
@@ -79,6 +86,18 @@ const Navigation: React.FC = () => {
                 {context.currentUser?.username}
               </NavLink>
             </li>
+            {isAdmin && (
+              <li>
+                <NavLink
+                  to={'/users-manager'}
+                  className={(navData) =>
+                    navData.isActive ? navLinkClassesActive : navLinkClasses
+                  }
+                >
+                  Manage users
+                </NavLink>
+              </li>
+            )}
             <li onClick={onLogoutHandler} className={classes.logout}>
               Logout
             </li>

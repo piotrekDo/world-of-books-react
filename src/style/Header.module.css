@@ -17,8 +17,12 @@
 .header ul {
   list-style: none;
   position: relative;
-  right: 20%;
+  right: 15%;
   display: flex;
+}
+
+.header__admin {
+  background-color: rgb(117, 2, 2);
 }
 
 .navLinks {
@@ -39,9 +43,9 @@
 .navLinkActive:hover,
 .navLinkActive:active,
 .navLinkActive  {
-  color: #95bcf0;
+  color: white;
   padding-bottom: 0.25rem;
-  border-bottom: 4px solid #95bcf0;
+  border-bottom: 4px solid wheat;
 }
 
 .logout:hover,
