@@ -14,9 +14,8 @@
     content: '';
     background-image: url('../assets/audiobook-bg.jpeg');
     width: 102%;
-    left: -0px;
     height: 127%;
-    background-size:auto;
+    background-size:cover;
     position: absolute;
     top: -270px;
     bottom: 0px;
