@@ -1,14 +1,17 @@
 import { useContext } from 'react';
+import AudiobookView from '../components/AudiobookView';
+import ScientificPaperView from '../components/ScientificPapersView';
 import AppContext from '../context/AppContext';
 import classes from '../style/Publications.module.css';
 
 const Publications: React.FC = (props) => {
   const context = useContext(AppContext);
-  const isAdmin = context.currentUser?.roles === undefined ? false : context.currentUser?.roles.indexOf('admin') > -1;
+  const isAdmin = !context.currentUser ? false : context.currentUser?.roles.indexOf('admin') > -1;
+  
   return (
-    <section className={classes.main}>
-      <h1>Publications work!</h1>
-      
+    <section>
+      <ScientificPaperView/>
+      <AudiobookView/>
     </section>
   );
 };
