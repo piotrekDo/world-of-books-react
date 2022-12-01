@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootLayout from './pages/RootLayout';
 import ErrorPage from './pages/Error';
 import HomePage, {
@@ -10,15 +10,15 @@ import HomePage, {
 import ScientificPaper, {
   loader as scientificPaperLoader,
 } from './pages/ScientificPaper';
-import AudioBook, {
-  loader as audiobookLoader,
-} from './pages/Audiobook';
+import AudioBook, { loader as audiobookLoader } from './pages/Audiobook';
 import Register, { action as registerNewAccoutAction } from './pages/Register';
 import LoginPage from './pages/LoginPage';
 import { AppContextProvider } from './context/AppContext';
 import Publications from './pages/Publications';
 import UserPage from './pages/UserPage';
 import ManageUsers from './pages/ManageUsers';
+import AuthenticatedGuard from './guards/AuthenticatedGuard';
+import AdminGuard from './guards/AdminGuard';
 
 const router = createBrowserRouter([
   {
@@ -42,24 +42,40 @@ const router = createBrowserRouter([
       },
       {
         path: '/users-manager',
-        element: <ManageUsers />,
+        element: <AdminGuard><ManageUsers /></AdminGuard>,
       },
       {
         path: '/user',
-        element: <UserPage />,
+        element: (
+          <AuthenticatedGuard>
+            <UserPage />
+          </AuthenticatedGuard>
+        ),
       },
       {
         path: '/publications',
-        element: <Publications />,
+        element: (
+          <AuthenticatedGuard>
+            <Publications />
+          </AuthenticatedGuard>
+        ),
       },
       {
         path: '/paper/:id',
-        element: <ScientificPaper />,
+        element: (
+          <AuthenticatedGuard>
+            <ScientificPaper />
+          </AuthenticatedGuard>
+        ),
         loader: scientificPaperLoader,
       },
       {
         path: '/audiobook/:id',
-        element: <AudioBook />,
+        element: (
+          <AuthenticatedGuard>
+            <AudioBook />
+          </AuthenticatedGuard>
+        ),
         loader: audiobookLoader,
       },
     ],
