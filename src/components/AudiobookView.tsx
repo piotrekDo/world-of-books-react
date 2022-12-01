@@ -1,6 +1,6 @@
-import useFetchPublications from '../hooks/UseFetchPublications';
+import useFetchAudiobooks from '../hooks/UseFetchAudiobooks';
 import classes from '../style/AudiobookView.module.css';
-import ScientificPaperCard from './ScientificPaperCard';
+import AudiobookCard from './AudiobookCard';
 import PrimarySpinner from './spinners/PrimarySpinner';
 
 const AudiobookView = () => {
@@ -8,17 +8,17 @@ const AudiobookView = () => {
     publications: papers,
     isLoading: papersLoading,
     error: papersError
- } = useFetchPublications(2000) ;
+ } = useFetchAudiobooks(3500) ;
 
  console.log(papers);
 
   return (
     <section className={classes.main}>
-      <h1>Avalible scientific papers</h1>
-        {papersLoading && <div className={classes.spinner}><PrimarySpinner message='Getting scientific papers'/></div>}
+      <h1>Avalible audiobooks</h1>
+        {papersLoading && <div className={classes.spinner}><PrimarySpinner message='Getting audiobooks'/></div>}
       <div className={classes.container}>
         {(!papersLoading && !papersError) && <div className={classes.flexParent}>
-            {papers.map(paper => <div className={classes.flexChild} key={paper.id}><ScientificPaperCard paper={paper}/></div>)}</div>}
+            {papers.map(audiobook => <div className={classes.flexChild} key={audiobook.id}><AudiobookCard audiobook={audiobook}/></div>)}</div>}
         {(!papersLoading && papersError) && <h3>{papersError}</h3>}
       </div>
     </section>

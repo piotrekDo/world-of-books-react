@@ -9,7 +9,7 @@ type ReturnType = {
     error: string | null;
 }
 
-function useFetchPublications(sleepTime: number): ReturnType {
+function useFetchPapers(sleepTime: number): ReturnType {
   const [publications, setPublications] = useState<ScientificPaperModel[]>([]);
   const [isLoading, setIsloading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -44,4 +44,4 @@ function useFetchPublications(sleepTime: number): ReturnType {
 }
 
 
-export default useFetchPublications;
+export default useFetchPapers;

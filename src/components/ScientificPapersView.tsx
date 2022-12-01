@@ -1,4 +1,4 @@
-import useFetchPublications from '../hooks/UseFetchPublications';
+import useFetchPapers from '../hooks/UseFetchPapers';
 import classes from '../style/ScientificPaperView.module.css';
 import ScientificPaperCard from './ScientificPaperCard';
 import PrimarySpinner from './spinners/PrimarySpinner';
@@ -8,7 +8,7 @@ const ScientificPaperView = () => {
     publications: papers,
     isLoading: papersLoading,
     error: papersError
- } = useFetchPublications(2000) ;
+ } = useFetchPapers(2000) ;
 
  console.log(papers);
 

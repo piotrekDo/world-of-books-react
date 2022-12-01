@@ -11,4 +11,12 @@ export class AudiobookApi {
     static getAudiobook = async (id: number) => {
       return await axios.get<AudiobookModel>(LOCALHOST_DOMAIN + `/audiobook/${id}`);
     }
+
+    static getAllAudiobooks = async () => {
+      try {
+        return await axios.get<AudiobookModel[]>(LOCALHOST_DOMAIN + '/audiobooks');
+      }catch(error) {
+        return error;
+      }
+    }
   }

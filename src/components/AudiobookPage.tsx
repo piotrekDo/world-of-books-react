@@ -69,7 +69,7 @@ const AudioboookPage: React.FC<Props> = (props) => {
       <h4>Short description: {props.audiobook.description}</h4>
       <h5>ISBN: {props.audiobook.isbn}</h5>
       <h5>Publishing House: {props.audiobook.publishingHouse}</h5>
-      <h5>Lenght in minutes: {props.audiobook.length}</h5>
+      <h5>Lenght in minutes: {props.audiobook.length / 60}</h5>
       <h5>Published date: {props.audiobook.publishedDate}</h5>
       <h5>Adults restricted: {props.audiobook.isForAdults ? 'Adults only' : 'For everyone'}</h5>
       <h4>Authors:</h4>

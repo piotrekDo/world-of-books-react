@@ -13,12 +13,11 @@
 .main::before {
   content: '';
   background-image: url('../assets/library-epic.jpeg');
-  width: 105%;
-  left: -60px;
-  height: 127%;
+  width: 100vw;
+  height: 154vh;
   background-size: cover;
   position: absolute;
-  top: -270px;
+  top: -700px;
   bottom: 0px;
   opacity: 0.4;
 }
