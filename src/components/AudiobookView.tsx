@@ -10,7 +10,6 @@ const AudiobookView = () => {
     error: papersError
  } = useFetchAudiobooks(3500) ;
 
- console.log(papers);
 
   return (
     <section className={classes.main}>

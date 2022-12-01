@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
+import { AddNewScientificPaperModel } from '../model/AddNewScientificPaperModel';
 import { PageModel } from '../model/PageModel';
 import { ScientificPaperModel } from '../model/ScientificPaperModel';
 
@@ -21,6 +22,17 @@ export class ScientificPaperApi {
     try {
       return await axios.get<PageModel<ScientificPaperApi[]>>(
         LOCALHOST_DOMAIN + '/papers'
+      );
+    } catch (error) {
+      return error;
+    }
+  };
+
+  static addNewScientificPaper = async (paper: AddNewScientificPaperModel) => {
+    try {
+      return await axios.post<ScientificPaperModel>(
+        LOCALHOST_DOMAIN + '/papers',
+        paper
       );
     } catch (error) {
       return error;
