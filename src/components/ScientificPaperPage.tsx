@@ -20,6 +20,7 @@ const ScientificPaperPage: React.FC<ScientificPaperPageProps> = (props) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
+  const restricted = props.paper.forAdults && !context.currentUser?.adult;
 
   const fetchBorrowed = useCallback(async () => {
     setIsLoading(true);
@@ -77,8 +78,9 @@ const ScientificPaperPage: React.FC<ScientificPaperPageProps> = (props) => {
       {props.paper.authors.map((aut) => (
         <p key={aut.id}>{aut.firstName + ' ' + aut.lastName}</p>
       ))}
-      <button className={classes['button-28']} role="button" disabled={isDisabled} onClick={borrowHandler}>{isLoading ? <ButtonSpinner message='Checking'/> : 
-      borrowed === true ? `You have access untill: ${borrowedAccess}` : 'Get access'}</button>
+      {!restricted &&       <button className={classes['button-28']} role="button" disabled={isDisabled} onClick={borrowHandler}>{isLoading ? <ButtonSpinner message='Checking'/> : 
+      borrowed === true ? `You have access untill: ${borrowedAccess}` : 'Get access'}</button>}
+      {restricted &&       <button className={classes['button-28']} role="button" disabled>Presented publication is meant for adults only</button>}
     </div>
   );
 };

@@ -29,6 +29,12 @@
   justify-content: center;
 }
 
+.container__row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .main h3 {
   font-size: 2rem;
   margin-bottom: 0;

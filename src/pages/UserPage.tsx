@@ -9,7 +9,7 @@ const UserPage: React.FC = (props) => {
   const user = context.currentUser;
   return (
     <section className={classes.main}>
-      <div>
+      <div className={classes['container__row']}>
         <div className={classes.container}>
           <h3>Currently borrowed publications</h3>
           <CurrentlyBorrowedByUserList username={user!.username} />
