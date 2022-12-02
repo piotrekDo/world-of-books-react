@@ -32,9 +32,15 @@
 }
 
 .authorsList {
+  background-color: #15172b;
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 20px;
+  opacity: .6;
   position: absolute;
-  top: 20vh;
-  left: 15vw;
+  top: 21vh;
+  left: 10vw;
+  min-width: 400px;
 }
 
 .form {
@@ -153,9 +159,41 @@
     /* outline: 0; */
     text-align: center;
     width: 100%;
+    justify-content: center;
   }
   
   .submit:active {
     background-color: #06b;
   }
+
+  .author-container {
+    display: flex;
+    
+  }
+
+  .add-author-button{
+    background-color: #08d;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: wheat;
+    cursor: pointer;
+    font-size: 18px;
+    height: 50px;
+    /* outline: 0; */
+    text-align: center;
+    width: 25%;
+    margin-left: 10px;
+    justify-content: center;
+  }
+
+  .selected-authors-tab {
+    display: flex;
+    align-items: center;
+  }
+
+  .selected-authors-tab p {
+    margin-left: 10px;
+  }
+
   

@@ -1,4 +1,3 @@
-import { Spinner } from '@chakra-ui/react';
 import { useState } from 'react';
 import useFetchAuthors from '../hooks/UseFetchAuthors';
 import useInput from '../hooks/UseInput';
@@ -6,6 +5,7 @@ import { ScientificPaperApi } from '../lib/ScientificpaperApi';
 import { AddNewScientificPaperModel } from '../model/AddNewScientificPaperModel';
 import { AuthorSimpleModel } from '../model/AuthorSimpleModel';
 import classes from '../style/Register.module.css';
+import classes2 from '../style/RemoveButton.module.css';
 import { sleep } from '../utils/Other';
 import PrimarySpinner from './spinners/PrimarySpinner';
 
@@ -58,10 +58,10 @@ const AddNewScientificPaperForm = () => {
    const [fieldSelected, setFieldSelected] = useState<string>();
    const [dateSeleted, setDateSelected] = useState<string>();
    const [isForAdult, setIsforAdult] = useState<boolean>(false);
+
    const [isFormSubmitting, setisFormSubmitting] = useState<boolean>(false);
    const [submitError, setSubmitError] = useState<string>();
    const [formSuccess, setFormSuccess] = useState<boolean>(false)
-
    const isFormValid = nameIsValid && descIsValid && authorsSelected.length > 0 && fieldSelected && pagesIsValid && dateSeleted && universityIsValid;
 
 
@@ -87,6 +87,12 @@ const AddNewScientificPaperForm = () => {
   const adultChangeChandler = (event : any) => {
     const value = event.target.value === 'true';
     setIsforAdult(value);
+  }
+
+  const removeAuthorHandler = (id: number) : any => {
+    setAuthorsSelected((prev) => {
+      return prev.filter(author => author.id !== id);
+    })
   }
 
   const resetForm = () => {
@@ -177,7 +183,8 @@ const AddNewScientificPaperForm = () => {
           </label>
         </div>
         <div className={`${classes.inputcontainer} ${classes.ic2}`}>
-          <select id="author" onChange={authorChangeHandler} defaultValue={'Select author'}>
+<div className={`${classes.inputcontainer} ${classes['author-container']}`}>
+<select id="author" className={classes.input} onChange={authorChangeHandler} defaultValue={'Select author'}>
             <option disabled>
               Select author
             </option>
@@ -191,12 +198,11 @@ const AddNewScientificPaperForm = () => {
           <label htmlFor="author" className={classes.placeholder}>
             Author
           </label>
-          <button type="button" onClick={addAuthorHandler}>
-            Add author
-          </button>
+          <button type="button" className={classes['add-author-button']} onClick={addAuthorHandler}>Add author</button>
+</div>
         </div>
         <div className={`${classes.inputcontainer} ${classes.ic2}`}>
-          <select id="field" defaultValue={'Select field'} onChange={fieldChangeHandler}>
+          <select id="field" className={classes.input} defaultValue={'Select field'} onChange={fieldChangeHandler}>
             <option disabled>Select field</option>
             <option value={'ASTRONOMY'}>astronomy</option>
             <option value={'CHEMISTRY'}>Chemistry</option>
@@ -258,7 +264,7 @@ const AddNewScientificPaperForm = () => {
           </label>
         </div>
         <div className={`${classes.inputcontainer} ${classes.ic2}`}>
-          <select id="forAdults" defaultValue={'No'} onChange={adultChangeChandler}>
+          <select id="forAdults" className={classes.input} defaultValue={'No'} onChange={adultChangeChandler}>
             <option value={'false'}>No</option>
             <option value={'true'}>Yes</option>
           </select>
@@ -274,7 +280,11 @@ const AddNewScientificPaperForm = () => {
     </div> 
     <div className={classes.authorsList}>
         <h3 >Selected authors</h3>
-        {<div >{authorsSelected.map(author => <p key={author.id}>{author.firstName} {author.lastName}</p>)}</div>}
+        {<div >{authorsSelected.map(author => 
+        <div className={classes['selected-authors-tab']}>
+<button onClick={e => removeAuthorHandler(author.id)} className={`${classes2.noselect} ${classes2.button}`}><span className={classes2.text}>Remove</span><span className={classes2.icon}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg></span></button>
+<p key={author.id}>{author.firstName} {author.lastName}</p>
+        </div>)}</div>}
     </div>
     </>
   );

@@ -1,0 +1,64 @@
+.noselect {
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+		-webkit-tap-highlight-color: transparent;
+}
+
+.button {
+	width: 100px;
+	height: 40px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	background: red;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+	background: #e62222;
+}
+
+.button, .button span {
+	transition: 200ms;
+}
+
+.button .text {
+	color: white;
+	font-weight: bold;
+}
+
+.button .icon {
+	position: absolute;
+	transform: translateX(55px);
+	height: 40px;
+	width: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.button svg {
+	width: 12px;
+	fill: #eee;
+}
+
+.button:hover {
+	background: #ff3636;
+}
+
+.button:hover .text {
+	color: transparent;
+}
+
+.button:hover .icon {
+	width: 150px;
+	border-left: none;
+	transform: translateX(-30px);
+}
+
+.button:focus {
+	outline: none;
+}

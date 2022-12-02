@@ -2,18 +2,13 @@ import useInput from '../../hooks/UseInput';
 import classes from '../style/Register.module.css';
 
 type Props = {
+    value: any;
     label: string;
+    onBlur : () => any;
+    onChange : () => any;
 }
 
 const Input:React.FC<Props> = (props) => {
-   const {
-    value: enteredValue,
-    isValid: valueIsValid,
-    hasError,
-    valueChangeHandler,
-    inputBlurHandler,
-    reset
-   } =  useInput((text) => text.trim().length > 0);
 
 return(
     <div className={`${classes.inputcontainer} ${classes.ic1}`}>
@@ -23,9 +18,9 @@ return(
       className={classes.input}
       type="text"
       placeholder=" "
-      onBlur={inputBlurHandler}
-      onChange={valueChangeHandler}
-      value={enteredValue}
+      onBlur={props.onBlur}
+      onChange={props.onChange}
+      value={props.value}
     />
     <div className={classes.cut}></div>
     <label htmlFor={props.label} className={classes.placeholder}>
