@@ -1,7 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
 import { BorrowApi } from '../lib/BorrowApi';
 import { BorrowModel } from '../model/BorrowModel';
+import CalendarDate from './CalendarDate';
 import PrimarySpinner from './spinners/PrimarySpinner';
+import classes from '../style/CurrentlyBorrowedByUserList.module.css';
+import { Link } from 'react-router-dom';
+import { publicationTypeParser } from '../utils/Other';
 
 type ComponentProps = {
   username: string;
@@ -35,7 +39,7 @@ const BorrowHistoryByUser: React.FC<ComponentProps> = (props) => {
 
   return (
     <>
-      <section id="currentlyBorrowedSection">
+      <section id="currentlyBorrowedSection" className={classes.section}>
         {isHistoryLoading && (
           <div>
             <PrimarySpinner message="Loading borrowed publicaions history" />
@@ -46,11 +50,27 @@ const BorrowHistoryByUser: React.FC<ComponentProps> = (props) => {
           <p>you haven't borrow any publications</p>
         )}
         {!isHistoryLoading && history!.length > 0 && (
-          <ul>
-            {history!.map((history) => (
-              <p key={history.id}>
-                {history.publicationName}, {history.requiredReturnDate}
-              </p>
+          <ul className={classes.tilesWrap}>
+            {history?.map((history) => (
+              <li key={history.id}>
+                <h2>
+                  <CalendarDate date={history.requiredReturnDate} />
+                </h2>
+                <h3>{history.publicationName}</h3>
+                <p>{publicationTypeParser(history.publicationType)}</p>
+                <button>
+                  <Link
+                    className={classes.link}
+                    to={
+                      history.publicationType === 'AUDIOBOOK'
+                        ? `/audiobook/${history.publicationId}`
+                        : `/paper/${history.publicationId}`
+                    }
+                  >
+                    See more
+                  </Link>
+                </button>
+              </li>
             ))}
           </ul>
         )}

@@ -1,8 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
 import { BorrowApi } from '../lib/BorrowApi';
 import { BorrowModel } from '../model/BorrowModel';
-import { sleep } from '../utils/Other';
+import { publicationTypeParser, sleep } from '../utils/Other';
 import PrimarySpinner from './spinners/PrimarySpinner';
+import classes from '../style/CurrentlyBorrowedByUserList.module.css';
+import CalendarDate from './CalendarDate';
+import { Link } from 'react-router-dom';
 
 type ComponentProps = {
   username: string;
@@ -20,7 +23,7 @@ const CurrentlyBorrowedByUserList: React.FC<ComponentProps> = (props) => {
       props.username
     );
 
-    if(data.message) {
+    if (data.message) {
       setError(data.message);
       setBorrowed([]);
     }
@@ -36,7 +39,7 @@ const CurrentlyBorrowedByUserList: React.FC<ComponentProps> = (props) => {
 
   return (
     <>
-      <section id="currentlyBorrowedSection">
+      <section id="currentlyBorrowedSection" className={classes.section}>
         {isBorrowedLoading && (
           <div>
             <PrimarySpinner message="Loading borrowed publicaions" />
@@ -47,11 +50,27 @@ const CurrentlyBorrowedByUserList: React.FC<ComponentProps> = (props) => {
           <p>No currently borrowed publications</p>
         )}
         {!isBorrowedLoading && borrowed!.length > 0 && (
-          <ul>
-            {borrowed!.map((borrowed) => (
-              <p key={borrowed.id}>
-                {borrowed.publicationName}, {borrowed.requiredReturnDate}
-              </p>
+          <ul className={classes.tilesWrap}>
+            {borrowed?.map((borrowed) => (
+              <li key={borrowed.id}>
+                <h2>
+                  <CalendarDate date={borrowed.requiredReturnDate} />
+                </h2>
+                <h3>{borrowed.publicationName}</h3>
+                <p>{publicationTypeParser(borrowed.publicationType)}</p>
+                <button>
+                  <Link
+                    className={classes.link}
+                    to={
+                      borrowed.publicationType === 'AUDIOBOOK'
+                        ? `/audiobook/${borrowed.publicationId}`
+                        : `/paper/${borrowed.publicationId}`
+                    }
+                  >
+                    See more
+                  </Link>
+                </button>
+              </li>
             ))}
           </ul>
         )}

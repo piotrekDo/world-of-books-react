@@ -46,14 +46,6 @@ const Navigation: React.FC = () => {
             >
               Publications
             </NavLink>
-            <NavLink
-              className={(navData) =>
-                navData.isActive ? navLinkClassesActive : navLinkClasses
-              }
-              to="/lol"
-            >
-              Anuther dummy Link
-            </NavLink>
           </ul>
         )}
         {!isUserLogged && (

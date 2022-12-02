@@ -1,23 +1,36 @@
 .main {
   top: 90px;
   position: relative;
-  height: 90vh;
+  min-height: 90vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   color: wheat;
+  z-index: 10;
 }
 
 .main::before {
   content: '';
   background-image: url('../assets/library-epic.jpeg');
   width: 100vw;
-  height: 154vh;
   background-size: cover;
   position: absolute;
   top: -700px;
   bottom: 0px;
   opacity: 0.4;
+  z-index: -10;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.main h3 {
+  font-size: 2rem;
+  margin-bottom: 0;
+  align-self: flex-start;
 }

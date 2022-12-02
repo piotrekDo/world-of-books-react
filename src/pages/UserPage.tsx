@@ -9,13 +9,16 @@ const UserPage: React.FC = (props) => {
   const user = context.currentUser;
   return (
     <section className={classes.main}>
-      <h1>{user?.username}</h1>
-      <h3>Currently borrowed publications</h3>
       <div>
-        <CurrentlyBorrowedByUserList username={user!.username} />
+        <div className={classes.container}>
+          <h3>Currently borrowed publications</h3>
+          <CurrentlyBorrowedByUserList username={user!.username} />
+        </div>
+        <div>
+          <h3>Borrow history</h3>
+          <BorrowHistoryByUser username={user!.username} />
+        </div>
       </div>
-      <h3>Borrow history</h3>
-      <BorrowHistoryByUser username={user!.username}/>
     </section>
   );
 };
