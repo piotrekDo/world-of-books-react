@@ -180,11 +180,17 @@
     cursor: pointer;
     font-size: 18px;
     height: 50px;
-    /* outline: 0; */
     text-align: center;
     width: 25%;
     margin-left: 10px;
     justify-content: center;
+    transition: all .2s;
+  }
+
+  .add-author-button:hover{
+    transition: all .5s;
+    color: #08d;
+    background-color: wheat;
   }
 
   .selected-authors-tab {
@@ -194,6 +200,63 @@
 
   .selected-authors-tab p {
     margin-left: 10px;
+  }
+
+  .bump {
+    animation: bump 300ms ease-out;
+  }
+
+  .nope {
+    animation: nope 300ms ease-out;
+  }
+  
+  
+  @keyframes bump {
+    0% {
+      transform: scale(1);
+      background-color: greenyellow;
+    }
+    10% {
+      transform: scale(0.9);
+    }
+    30% {
+      transform: scale(1.1);
+    }
+    50% {
+      transform: scale(1.15);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes nope {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+  
+    10%,
+    30%,
+    50%,
+    70% {
+      transform: translateX(-10px);
+      background-color: red;
+    }
+  
+    20%,
+    40%,
+    60% {
+      transform: translateX(12px);
+    }
+  
+    80% {
+      transform: translateX(8px);
+    }
+  
+    90% {
+      transform: translateX(-8px);
+    }
   }
 
   

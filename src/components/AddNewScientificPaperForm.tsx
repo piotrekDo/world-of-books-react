@@ -65,9 +65,23 @@ const AddNewScientificPaperForm = () => {
    const isFormValid = nameIsValid && descIsValid && authorsSelected.length > 0 && fieldSelected && pagesIsValid && dateSeleted && universityIsValid;
 
 
+   const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
+   const [btnIsNope, setBtnIsNope] = useState(false);
+   const btnClasses = `${classes['add-author-button']} ${btnIsHighlighted ? classes.bump : ''} ${btnIsNope ? classes.nope : ''}`;
+
   const addAuthorHandler = () => {
-    if (currentlySelected && authorsSelected.indexOf(currentlySelected) === -1)
+    if (currentlySelected && authorsSelected.indexOf(currentlySelected) === -1) {
       setAuthorsSelected((prev) => prev.concat(currentlySelected));
+      setBtnIsHighlighted(true);
+      setTimeout(() => {
+        setBtnIsHighlighted(false);
+      }, 300);
+    } else {
+      setBtnIsNope(true);
+      setTimeout(() => {
+        setBtnIsNope(false);
+      }, 300);
+    }
   };
 
   const authorChangeHandler = (event: any) => {
@@ -198,7 +212,7 @@ const AddNewScientificPaperForm = () => {
           <label htmlFor="author" className={classes.placeholder}>
             Author
           </label>
-          <button type="button" className={classes['add-author-button']} onClick={addAuthorHandler}>Add author</button>
+          <button type="button" className={btnClasses} onClick={addAuthorHandler}>Add author</button>
 </div>
         </div>
         <div className={`${classes.inputcontainer} ${classes.ic2}`}>
