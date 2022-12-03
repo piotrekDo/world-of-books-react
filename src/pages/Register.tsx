@@ -94,9 +94,10 @@ export async function action({ request }: any) {
   await sleep(2000);
   const data = await request.formData();
 
-  const error = await UserApi.registerNewUser(data);
-  if (error) {
-    return redirect('/');
+  const response: any = await UserApi.registerNewUser(data);
+  if (response.data) {
+    console.log(response)
+    return redirect('/login-page');
   }
 
   return redirect('/');
