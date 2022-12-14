@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -19,6 +19,8 @@ import UserPage from './pages/UserPage';
 import ManageUsers from './pages/ManageUsers';
 import AuthenticatedGuard from './guards/AuthenticatedGuard';
 import AdminGuard from './guards/AdminGuard';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const router = createBrowserRouter([
   {
@@ -83,6 +85,10 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+  
   return (
     <AppContextProvider>
       <RouterProvider router={router} />

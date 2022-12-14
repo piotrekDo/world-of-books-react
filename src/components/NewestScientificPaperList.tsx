@@ -13,7 +13,7 @@ const NewestScientificPaperList: React.FC<NewestScientificPaperListProps> = (
   return (
     <Container bg={'green.400'} h={'50%'} className={`${classes.container}`} >
       <div ></div>
-      <h1>Newest scientific papers</h1>
+      <h1 data-aos="zoom-in" data-aos-duration="1500">Newest scientific papers</h1>
       <Grid templateColumns="repeat(5, 1fr)" gap={6}>
         {props.papers.map((paper: ScientificPaperModel) => (
           <ScientificPaperCard key={paper.id} paper={paper}/>

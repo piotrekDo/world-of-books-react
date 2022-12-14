@@ -13,6 +13,7 @@
     "@types/node": "^16.18.3",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
+    "aos": "^3.0.0-beta.6",
     "axios": "^1.2.0",
     "framer-motion": "^7.6.12",
     "react": "^18.2.0",
@@ -45,5 +46,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/aos": "^3.0.4"
   }
 }

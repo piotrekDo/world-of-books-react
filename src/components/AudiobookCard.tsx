@@ -26,7 +26,7 @@ const AudiobookCard: React.FC<AudiobookCardProps> = (props) => {
         onClick={user ? redirectHandler : scrollHandle}
       >
         <div className={classes.container}>
-          <div className={classes.card}>
+          <div data-aos="fade-left" data-aos-duration="1500" className={classes.card}>
             <div className={classes.box}>
               <div className={classes.content}>
                 <h2>{props.audiobook.length / 60} min</h2>

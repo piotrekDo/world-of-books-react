@@ -1,10 +1,11 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 import { ScientificPaperModel } from '../model/ScientificPaperModel';
 import classes from '../style/ScientificPaperCard.module.css';
 import {scrollHandle} from '../utils/ScrollHandler'
 import { truncate } from '../utils/StringUtlis';
+
 
 type BookCardProps = {
   paper: ScientificPaperModel;
@@ -26,7 +27,7 @@ const ScientificPaperCard: React.FC<BookCardProps> = (props) => {
       onClick={user ? redirectHandler : scrollHandle}
     >
       <div className={classes.container}>
-        <div className={classes.card}>
+        <div data-aos="fade-right" data-aos-duration="1500" className={classes.card}>
           <div className={classes.box}>
             <div className={classes.content}>
               <h2>{props.paper.field === 'COMPUTER_SCIENCE' ? 'CS' : props.paper.field}</h2>
